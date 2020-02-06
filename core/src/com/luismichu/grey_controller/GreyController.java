@@ -45,12 +45,10 @@ public class GreyController extends ApplicationAdapter implements InputProcessor
 		Color c1 = Color.BLACK, c2 = Color.BLACK;
 		if(toc){
 			if(x < Gdx.graphics.getWidth()/2){
-				Gdx.app.log("toc", "izquierda, " + x);
 				c1 = Color.GREEN;
 				c2 = Color.BLACK;
 			}
 			else{
-				Gdx.app.log("toc", "derecha, " + x);
 				c1 = Color.BLACK;
 				c2 = Color.GREEN;
 			}
@@ -81,7 +79,6 @@ public class GreyController extends ApplicationAdapter implements InputProcessor
 		x = screenX;
 		y = screenY;
 		toc = true;
-		Gdx.app.log("toc", "tocado, " + x);
 		return true;
 	}
 

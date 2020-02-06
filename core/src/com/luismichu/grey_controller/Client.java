@@ -11,22 +11,25 @@ public class Client extends Thread{
     private boolean alive;
 
     private Socket conectar(){
+        String IP = MultiCastClient.recibirIP();
+
         SocketHints socketHints = new SocketHints();
         socketHints.connectTimeout = 4000;
-        return Gdx.net.newClientSocket(Net.Protocol.TCP, "192.168.1.106", 5555, socketHints);
+        return Gdx.net.newClientSocket(Net.Protocol.TCP, IP, 5555, socketHints);
     }
 
     public void run(){
-        Gdx.app.log("log", "Hilo iniciado");
         Socket socket = conectar();
-        Gdx.app.log("log", "Conectado a 106");
-
+        Gdx.app.log("w", "Conectado");
         PrintWriter fsalida = new PrintWriter(socket.getOutputStream(), true);
 
         alive = true;
         while(alive){
-            if(GreyController.toc)
-                fsalida.println(GreyController.x);
+            if(GreyController.toc) {
+                fsalida.println((int)((float)GreyController.x / Gdx.graphics.getWidth()* 100));
+                Gdx.app.log("w", String.valueOf(Gdx.graphics.getWidth()));
+                Gdx.app.log("w", String.valueOf((int) ((float)GreyController.x / Gdx.graphics.getWidth()* 100)));
+            }
 
             try {
                 Thread.sleep(16);
