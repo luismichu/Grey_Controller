@@ -11,18 +11,19 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GreyController extends ApplicationAdapter implements InputProcessor {
 	private SpriteBatch batch;
-	Texture img;
 	private ShapeRenderer sR;
-	private boolean toc;
-	private int x, y;
+	public static boolean toc;
+	public static int x, y;
+	private Client cliente;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
 		sR = new ShapeRenderer();
 		toc = false;
 		Gdx.input.setInputProcessor(this);
+		cliente = new Client();
+		cliente.start();
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class GreyController extends ApplicationAdapter implements InputProcessor
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		//batch.draw(img, 0, 0);
 		update();
 		batch.end();
 	}
@@ -38,7 +38,7 @@ public class GreyController extends ApplicationAdapter implements InputProcessor
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		cliente.dispose();
 	}
 
 	private void update(){
