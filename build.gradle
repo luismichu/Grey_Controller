@@ -11,7 +11,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
-        
+        classpath 'com.google.gms:google-services:4.2.0'
 
     }
 }
@@ -89,6 +89,7 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        
+
+        implementation 'com.google.firebase:firebase-admin:6.8.1'
     }
 }

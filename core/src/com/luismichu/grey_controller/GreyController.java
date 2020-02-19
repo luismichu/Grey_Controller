@@ -24,6 +24,8 @@ public class GreyController extends ApplicationAdapter implements InputProcessor
 		Gdx.input.setInputProcessor(this);
 		cliente = new Client();
 		cliente.start();
+		FBConexion fb = new FBConexion();
+		fb.start();
 	}
 
 	@Override
